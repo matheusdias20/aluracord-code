@@ -11,7 +11,7 @@ function Title(props) {
 
     return (
         <>
-            <h2> {props.children} </h2>
+            <h1> {props.children} </h1>
 
             <style jsx>{`
                 ${Tag} {
@@ -59,14 +59,14 @@ export default function PaginaInicial() {
               as="form"
               onSubmit={function (event) {
                 event.preventDefault();
-                roteamento.push('/chat')
+                roteamento.push(`/chat?username=${userna}`)
               }}
               styleSheet={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                 width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
               }}
             >
-              <Title tag="h3">Boas-vindas de volta!</Title>
+              <Title>Boas-vindas de volta!</Title>
               <Text variant="body3"  styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[700] }}>
                 {appConfig.name}
               </Text>
@@ -81,10 +81,10 @@ export default function PaginaInicial() {
                 fullWidth
                 textFieldColors={{
                   neutral: {
-                    textColor: appConfig.theme.colors.neutrals[200],
-                    mainColor: appConfig.theme.colors.neutrals[900],
-                    mainColorHighlight: appConfig.theme.colors.primary[500],
-                    backgroundColor: appConfig.theme.colors.neutrals[800],
+                    textColor: appConfig.theme.colors.neutrals[700],
+                    mainColor: appConfig.theme.colors.primary[500],
+                    mainColorHighlight: appConfig.theme.colors.primary[800],
+                    backgroundColor: appConfig.theme.colors.primary[400],
                   },
                 }}
               />
