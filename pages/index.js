@@ -67,7 +67,7 @@ export default function PaginaInicial() {
               }}
             >
               <Title tag="h3">Boas-vindas de volta!</Title>
-              <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[700] }}>
+              <Text variant="body3"  styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[700] }}>
                 {appConfig.name}
               </Text>
   
