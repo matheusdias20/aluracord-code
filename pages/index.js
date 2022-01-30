@@ -1,33 +1,39 @@
-import { Box, Button, Text, TextField, Image } from '@skynexui/components';
+import { Box, Button, Text, TextField, Image, Icon } from '@skynexui/components';
 import React from 'react';
 import { useRouter } from 'next/router';
 import appConfig from '../config.json';
+import Head from 'next/head'
 
-
-
-function Title(props) {
-
-    const Tag = props.tag
-
-    return (
-        <>
-            <h1> {props.children} </h1>
-
-            <style jsx>{`
-                ${Tag} {
-                    color: ${appConfig.theme.colors.neutrals['700']};
-                    font-size: 24px;
-                    font-weight: 600;
-                }
-                `}
-            </style>
-        </>
-    )
+const GithubField = (props) => {
+  return(
+    <Text tag="a" href={"https://github.com/matheusdias20"} target="_blank"   variant="body4" styleSheet={{
+      backgroundColor: appConfig.theme.colors.primary['500'],
+      border: '1px solid',
+      borderColor: appConfig.theme.colors.primary['100'],
+      color:appConfig.theme.colors.primary['100'],
+      padding: ' 0.5rem 0.8rem',
+      display:'flex',
+      alignItems:'center',
+      gap:'0.8rem',
+      borderRadius: '1000px',
+      cursor: 'pointer',
+      textDecoration: 'none',
+      hover: {
+        backgroundColor: appConfig.theme.colors.primary['100'],
+        color: appConfig.theme.colors.primary['500'],
+        borderColor: appConfig.theme.colors.primary['500'],
+      }
+    }}>
+      {props.children}
+    </Text>
+  )
 }
+
+
 
 export default function PaginaInicial() {
     // const username = 'matheusdias20';
-    const [username, setUsername] = React.useState('matheusdias20');
+    const [username, setUsername] = React.useState('');
     const roteamento = useRouter();
 
     return (
@@ -35,10 +41,15 @@ export default function PaginaInicial() {
         <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            backgroundImage: 'url(https://preview.redd.it/t7b5j2cqpce21.png?auto=webp&s=722e7dcb6a150fc6be3513ab186cc60db0a9ab27)',
+            backgroundImage: 'url(https://wallpapercave.com/wp/wp2757874.gif)',
             backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
           }}
         >
+
+        <Head>
+          <title>Codecord</title>
+          <link rel="manifest" href="public/favicon.ico"/>
+        </Head>
           <Box
             styleSheet={{
               display: 'flex',
@@ -59,16 +70,16 @@ export default function PaginaInicial() {
               as="form"
               onSubmit={function (event) {
                 event.preventDefault();
-                roteamento.push(`/chat?username=${userna}`)
+                roteamento.push(`/chat?username=${username}`)
               }}
               styleSheet={{
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                 width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
               }}
             >
-              <Title>Boas-vindas de volta!</Title>
-              <Text variant="body3"  styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[700] }}>
-                {appConfig.name}
+              <Text styleSheet={{ marginBottom: '18px', fontSize: '32px', color: appConfig.theme.colors.primary['050'] }}>Boas-vindas de volta!</Text>
+              <Text variant="body3"  styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.primary['200'] }}>
+              <GithubField ><Icon name="FaGithub" size="2.0ch" />{username || "matheusdias20"}</GithubField>
               </Text>
   
               <TextField
@@ -81,10 +92,12 @@ export default function PaginaInicial() {
                 fullWidth
                 textFieldColors={{
                   neutral: {
-                    textColor: appConfig.theme.colors.neutrals[700],
+                    textColor: appConfig.theme.colors.neutrals['000'],
                     mainColor: appConfig.theme.colors.primary[500],
-                    mainColorHighlight: appConfig.theme.colors.primary[800],
-                    backgroundColor: appConfig.theme.colors.primary[400],
+                    mainColorHighlight: appConfig.theme.colors.primary['010'],
+                    backgroundColor: appConfig.theme.colors.primary['500'],
+                    border: '1px solid',
+                    borderColor: appConfig.theme.colors.primary['100'],
                   },
                 }}
               />
@@ -94,9 +107,9 @@ export default function PaginaInicial() {
                 fullWidth
                 buttonColors={{
                   contrastColor: appConfig.theme.colors.neutrals["000"],
-                  mainColor: appConfig.theme.colors.primary[900],
-                  mainColorLight: appConfig.theme.colors.primary[800],
-                  mainColorStrong: appConfig.theme.colors.primary[800],
+                  mainColor: appConfig.theme.colors.primary['100'],
+                  mainColorLight: appConfig.theme.colors.primary[400],
+                  mainColorStrong: appConfig.theme.colors.primary[400],
                 }}
               />
             </Box>
@@ -113,7 +126,7 @@ export default function PaginaInicial() {
                 padding: '16px',
                 backgroundColor: appConfig.theme.colors.primary['500'],
                 border: '1px solid',
-                borderColor: appConfig.theme.colors.primary['500'],
+                borderColor: appConfig.theme.colors.primary['100'],
                 borderRadius: '10px',
                 flex: 1,
                 minHeight: '240px',
@@ -130,7 +143,7 @@ export default function PaginaInicial() {
                 variant="body4"
                 styleSheet={{
                   color: appConfig.theme.colors.neutrals[200],
-                  backgroundColor: appConfig.theme.colors.neutrals[900],
+                  backgroundColor: appConfig.theme.colors.primary['100'],
                   padding: '3px 10px',
                   borderRadius: '1000px'
                 }}
@@ -139,7 +152,7 @@ export default function PaginaInicial() {
               </Text>
             </Box>
             {/* Photo Area */}
-          </Box>
+          </Box> 
         </Box>
       </>
     );

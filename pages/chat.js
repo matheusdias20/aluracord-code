@@ -5,6 +5,7 @@ import { createClient } from '@supabase/supabase-js';
 
 import appConfig from '../config.json';
 import React from 'react';
+import Head from 'next/head'
 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzQ3MjUxMSwiZXhwIjoxOTU5MDQ4NTExfQ.hJqhXcQlOP8D5CB4nzdMH0wh-Sfa0aZKVnlgw1Lds-A';
 const SUPABASE_URL = 'https://mljyqpsfjrtrrdhamlsp.supabase.co';
@@ -78,8 +79,7 @@ export default function ChatPage() {
         <Box
           styleSheet={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            backgroundColor: appConfig.theme.colors.primary[500],
-            backgroundImage: `url(https://preview.redd.it/t7b5j2cqpce21.png?auto=webp&s=722e7dcb6a150fc6be3513ab186cc60db0a9ab27)`,
+            backgroundImage: `url(https://wallpapercave.com/wp/wp2757874.gif)`,
             backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
             color: appConfig.theme.colors.neutrals['000']
           }}
@@ -91,13 +91,18 @@ export default function ChatPage() {
               flex: 1,
               boxShadow: '0 2px 10px 0 rgb(0 0 0 / 20%)',
               borderRadius: '5px',
-              backgroundColor: appConfig.theme.colors.neutrals[700],
+              backgroundColor: appConfig.theme.colors.primary['500'],
               height: '100%',
               maxWidth: '95%',
               maxHeight: '95vh',
               padding: '32px',
             }}
           >
+
+        <Head>
+          <title>Codecord</title>
+          <link rel="manifest" href="public/favicon.ico"/>
+        </Head>
             <Header />
             <Box
               styleSheet={{
@@ -105,7 +110,7 @@ export default function ChatPage() {
                 display: 'flex',
                 flex: 1,
                 height: '80%',
-                backgroundColor: appConfig.theme.colors.neutrals[600],
+                backgroundColor: appConfig.theme.colors.primary['400'],
                 flexDirection: 'column',
                 borderRadius: '5px',
                 padding: '16px',
@@ -139,7 +144,7 @@ export default function ChatPage() {
                     resize: 'none',
                     borderRadius: '5px',
                     padding: '6px 8px',
-                    backgroundColor: appConfig.theme.colors.neutrals[800],
+                    backgroundColor: appConfig.theme.colors.primary['500'],
                     marginRight: '12px',
                     color: appConfig.theme.colors.neutrals[200],
                   }}
@@ -198,9 +203,7 @@ export default function ChatPage() {
                   borderRadius: '5px',
                   padding: '6px',
                   marginBottom: '12px',
-                  hover: {
-                    backgroundColor: appConfig.theme.colors.neutrals[700],
-                  }
+                  backgroundColor: appConfig.theme.colors.primary['500'],
                 }}
               >
                 <Box
@@ -234,7 +237,7 @@ export default function ChatPage() {
                 </Box>
                 {mensagem.texto.startsWith(':sticker:')
                   ? (
-                    <Image src={mensagem.texto.replace(':sticker:', '')} />
+                    <Image src={mensagem.texto.replace(':sticker:', '')} width='100px' height='100px' />
                   )
                   : (
                     mensagem.texto
