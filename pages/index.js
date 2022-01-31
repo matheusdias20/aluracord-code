@@ -79,7 +79,7 @@ export default function PaginaInicial() {
             >
               <Text styleSheet={{ marginBottom: '18px', fontSize: '32px', color: appConfig.theme.colors.primary['050'] }}>Boas-vindas de volta!</Text>
               <Text variant="body3"  styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.primary['200'] }}>
-              <GithubField ><Icon name="FaGithub" size="2.0ch" />{username || "matheusdias20"}</GithubField>
+              <GithubField ><Icon name="FaGithub" size="2.0ch" />{"matheusdias20"}</GithubField>
               </Text>
   
               <TextField
